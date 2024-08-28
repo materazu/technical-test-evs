@@ -2,10 +2,25 @@
 
 The goal of this project is to build a front/back application, to manage items. This project is a technical test for EVS.
 
-## Run projects (react / nest or both)
+# Project Overview
+
+This project is structured as a monorepo managed with [Nx](https://nx.dev/), leveraging modern technologies to build a scalable and maintainable application.
+
+- **API**: The backend is built using [NestJS](https://nestjs.com/), a progressive Node.js framework. The API is fully documented and accessible via [Swagger](https://swagger.io/) at `/api`, making it easy to explore and test the available endpoints.
+
+- **Frontend**: The frontend application is developed with [React](https://reactjs.org/), utilizing [Emotion](https://emotion.sh/docs/introduction) for styling, [Material-UI](https://mui.com/) for a rich set of UI components, and [Recoil](https://recoiljs.org/) for efficient state management.
+
+Together, these tools create a robust and flexible foundation for building both the backend and frontend of the application.
+
+# Install
+
+To be able to work with the project, you just need to do an `npm install` at root.
+
+## How to run (react / nest or both)
 
 To run, lint, test or e2e one app or both, you can use npm run with one of this commands.
-Start is running both projects in a dist posture, reflecting the production environment.
+
+You can run the stack with docker, `npm start` is running both projects in a dist posture, reflecting the production environment.
 | Command           | Description                                                                                               | Run Individually or All at Once                                |
 |-------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
 | `start`     | Start a production stack for React and Api.                                                  | Run all in docker using `npm start`.                  |
@@ -23,3 +38,11 @@ Start is running both projects in a dist posture, reflecting the production envi
 | `lint:all`        | Lints the codebases for both the React and NestJS API applications simultaneously.                        | Run all linting at once using `npm run lint:all`.              |
 | `test:all`        | Runs unit tests for both the React and NestJS API applications simultaneously.                            | Run all tests at once using `npm run test:all`.                |
 | `e2e:all`         | Runs end-to-end tests for both the React and NestJS API applications simultaneously.                      | Run all e2e tests at once using `npm run e2e:all`.             |
+
+## Urls
+
+| Entry Point                                         | Description                                           |
+|-----------------------------------------------------|-------------------------------------------------------|
+| [http://localhost:3001](http://localhost:3001)      | Frontend application (React)                          |
+| [http://localhost:3000/api](http://localhost:3000/api) | Backend API (NestJS) and Swagger documentation         |
+

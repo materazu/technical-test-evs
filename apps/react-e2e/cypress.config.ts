@@ -8,10 +8,10 @@ export default defineConfig({
       cypressDir: 'src',
       bundler: 'vite',
       webServerCommands: {
-        default: 'nx run react-nest-evs:serve',
-        production: 'nx run react-nest-evs:preview',
+        default: 'nx run react:serve',
+        production: 'nx run react:preview',
       },
-      ciWebServerCommand: 'nx run react-nest-evs:preview',
+      ciWebServerCommand: 'nx run react:preview',
       ciBaseUrl: 'http://localhost:4300',
     }),
     baseUrl: 'http://localhost:4200',

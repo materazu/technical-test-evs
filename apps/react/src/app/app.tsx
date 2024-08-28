@@ -9,7 +9,7 @@ const StyledApp = styled.div`
 export function App() {
   return (
     <StyledApp>
-      <NxWelcome title="react-nest-evs" />
+      <NxWelcome title="react" />
     </StyledApp>
   );
 }

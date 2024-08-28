@@ -2,7 +2,13 @@
   "name": "@react-nest-evs/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "serve:react": "nx serve react",
+    "build:react": "nx build react",
+    "lint:react": "nx lint react",
+    "test:react": "nx test react",
+    "e2e:react": "nx e2e react-e2e"
+  },
   "private": true,
   "dependencies": {
     "@emotion/react": "11.11.1",

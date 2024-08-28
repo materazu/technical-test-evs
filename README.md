@@ -1,101 +1,25 @@
 # ReactNestEvs
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+The goal of this project is to build a front/back application, to manage items. This project is a technical test for EVS.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+## Run projects (react / nest or both)
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/react-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
-
-## Run tasks
-
-To run the dev server for your app, use:
-
-```sh
-npx nx serve react-nest-evs
-```
-
-To create a production bundle:
-
-```sh
-npx nx build react-nest-evs
-```
-
-To see all available targets to run for a project, run:
-
-```sh
-npx nx show project react-nest-evs
-```
-        
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
-```sh
-npx nx g @nx/react:app demo
-```
-
-To generate a new library, use:
-
-```sh
-npx nx g @nx/react:lib mylib
-```
-
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Set up CI!
-
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
-```
-
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/react-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+To run, lint, test or e2e one app or both, you can use npm run with one of this commands.
+Start is running both projects in a dist posture, reflecting the production environment.
+| Command           | Description                                                                                               | Run Individually or All at Once                                |
+|-------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| `start`     | Start a production stack for React and Api.                                                  | Run all in docker using `npm start`.                  |
+| `serve:react`     | Starts the development server for the React application.                                                  | Run individually using `npm run serve:react`.                  |
+| `build:react`     | Builds the production version of the React application.                                                   | Run individually using `npm run build:react`.                  |
+| `lint:react`      | Lints the codebase for the React application to ensure code quality and adherence to standards.           | Run individually using `npm run lint:react`.                   |
+| `test:react`      | Runs unit tests for the React application.                                                                | Run individually using `npm run test:react`.                   |
+| `e2e:react`       | Runs end-to-end tests for the React application.                                                          | Run individually using `npm run e2e:react`.                    |
+| `serve:api`       | Starts the development server for the NestJS API application.                                             | Run individually using `npm run serve:api`.                    |
+| `build:api`       | Builds the production version of the NestJS API application.                                              | Run individually using `npm run build:api`.                    |
+| `lint:api`        | Lints the codebase for the NestJS API application.                                                        | Run individually using `npm run lint:api`.                     |
+| `test:api`        | Runs unit tests for the NestJS API application.                                                           | Run individually using `npm run test:api`.                     |
+| `e2e:api`         | Runs end-to-end tests for the NestJS API application.                                                     | Run individually using `npm run e2e:api`.                      |
+| `serve:all`       | Starts the development servers for both the React and NestJS API applications simultaneously.             | Run all services at once using `npm run serve:all`.            |
+| `lint:all`        | Lints the codebases for both the React and NestJS API applications simultaneously.                        | Run all linting at once using `npm run lint:all`.              |
+| `test:all`        | Runs unit tests for both the React and NestJS API applications simultaneously.                            | Run all tests at once using `npm run test:all`.                |
+| `e2e:all`         | Runs end-to-end tests for both the React and NestJS API applications simultaneously.                      | Run all e2e tests at once using `npm run e2e:all`.             |

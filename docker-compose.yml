@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  react-app:
+    build:
+      context: ./
+      dockerfile: ./apps/react/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app-network
+
+  api:
+    build:
+      context: ./
+      dockerfile: ./apps/api/Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

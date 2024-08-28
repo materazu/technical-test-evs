@@ -1,0 +1,10 @@
+{
+  "name": "react-nest-evs-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/react-nest-evs-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["react-nest-evs"],
+  "// targets": "to see all targets run: nx show project react-nest-evs-e2e --web",
+  "targets": {}
+}

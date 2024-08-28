@@ -31,3 +31,11 @@ export class ItemsService {
     return this.localStoreService.add(item);
   }
 }
+
+/* istanbul ignore next */
+export class ItemsServiceMock {
+  /* eslint-disable-next-line @typescript-eslint/no-empty-function */
+  getItems() { }
+  /* eslint-disable-next-line @typescript-eslint/no-empty-function */
+  addItem() { }
+}

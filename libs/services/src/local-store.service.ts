@@ -1,10 +1,8 @@
-import { Injectable } from '@nestjs/common';
 import { ItemDto } from '@evs/dtos';
 
 /**
  * Simple in-memory store for demonstration purposes.
  */
-@Injectable()
 export class LocalStoreService {
   /**
    * Private store for holding items
@@ -33,4 +31,13 @@ export class LocalStoreService {
   get store (): ItemDto[] {
     return this._store;
   }
+}
+
+/* istanbul ignore next */
+export class LocalStoreServiceMock {
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  private _store: any;
+  /* eslint-disable-next-line @typescript-eslint/no-empty-function */
+  add() {}
+  get store() { return this._store }
 }

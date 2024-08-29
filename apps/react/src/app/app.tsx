@@ -1,33 +1,27 @@
-import styled from '@emotion/styled';
-import { getItemDtoFixture, ItemDto } from '@evs/dtos';
-import { ItemsStore, createItemAction, findAllItemsAction } from '@evs/stores';
-import { useEffect } from 'react';
-import { SetterOrUpdater, useRecoilValue, useSetRecoilState } from 'recoil';
+import { ADD_ITEM, ITEM_LIST, PagesStore } from '@evs/stores';
+import { useRecoilState } from 'recoil';
+import { ItemAddForm, ItemList } from './components';
+import { AppBar, Button, Toolbar, Typography } from '@mui/material';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function App() {
-  const items: ItemDto[] = useRecoilValue(ItemsStore);
-  const setItems: SetterOrUpdater<ItemDto[]> = useSetRecoilState(ItemsStore);
-
-  const callFindItems = async () => {
-    await findAllItemsAction(setItems);
-  }
-
-  useEffect(() => {
-    setTimeout(() => {
-      createItemAction(getItemDtoFixture(), setItems);
-    }, 2000);
-  }, [])
-
-  useEffect(() => {
-    console.log('Items:', items);
-  }, [items]);
-
-  useEffect(() => {
-    callFindItems();
-  }, []);
+  const [activePage, setActivePage] = useRecoilState(PagesStore);
 
   return (
-    <></>
+    <>
+      <ToastContainer />
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Items Manager - EVS
+          </Typography>
+          <Button color="inherit" onClick={() => setActivePage(ADD_ITEM)}>Add New Item</Button>
+        </Toolbar>
+      </AppBar>
+      {activePage === ITEM_LIST && <ItemList />}
+      {activePage === ADD_ITEM && <ItemAddForm />}
+    </>
   );
 }
 

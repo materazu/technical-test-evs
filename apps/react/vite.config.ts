@@ -2,6 +2,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import * as path from 'path';
+
+const swaggerShimFile = '../../node_modules/@nestjs/swagger/dist/extra/swagger-shim.js';
 
 export default defineConfig({
   root: __dirname,
@@ -32,4 +35,10 @@ export default defineConfig({
       transformMixedEsModules: true,
     },
   },
+
+  resolve: {
+    alias: {
+      '@nestjs/swagger': path.resolve(__dirname, swaggerShimFile)
+    }
+  }
 });

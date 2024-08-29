@@ -10,7 +10,7 @@ export const axiosCall = <T>(
 
   switch (service) {
     case 'items':
-      url = process.env['ITEMS_URL'] ?? 'http://localhost:3000/api';
+      url = 'http://localhost:3001/api';
     break;
   }
 

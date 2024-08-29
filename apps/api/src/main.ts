@@ -5,7 +5,12 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { RootModule } from './root.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(RootModule);
+  const app = await NestFactory.create(RootModule, {
+    cors: {
+      origin: '*',
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
+    },
+  });
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
 

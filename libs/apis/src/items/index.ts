@@ -1,2 +1,2 @@
-export * from './create-item';
-export * from './find-all-items';
+export * from './create-item.api';
+export * from './find-all-items.api';

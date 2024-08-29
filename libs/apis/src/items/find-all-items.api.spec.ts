@@ -1,12 +1,12 @@
-import { findAllItems } from './find-all-items';
+import { findAllItemsApi } from './find-all-items.api';
 
-describe('findAllItems', () => {
+describe('findAllItemsApi', () => {
   it('should call get to get all items', async () => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const axiosInstance = require('../axios-instance');
     const spyOnAxiosCall = jest.spyOn(axiosInstance, 'axiosCall').mockResolvedValue([]);
 
-    const result = await findAllItems();
+    const result = await findAllItemsApi();
 
     expect(spyOnAxiosCall).toHaveBeenCalledWith(
       'items',
@@ -24,7 +24,7 @@ describe('findAllItems', () => {
     const spyOnAxiosCall = jest.spyOn(axiosInstance, 'axiosCall').mockRejectedValue(error);
 
     try {
-      await findAllItems();
+      await findAllItemsApi();
     } catch (err) {
       expect(err).toEqual(error);
     }

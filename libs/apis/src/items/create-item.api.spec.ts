@@ -1,7 +1,7 @@
 import { getItemDtoFixture } from '@evs/dtos';
-import { createItem } from './create-item';
+import { createItemApi } from './create-item.api';
 
-describe('createItem', () => {
+describe('createItemApi', () => {
   it('should call post with body to create item', async () => {
     const item = getItemDtoFixture();
 
@@ -9,7 +9,7 @@ describe('createItem', () => {
     const axiosInstance = require('../axios-instance');
     const spyOnAxiosCall = jest.spyOn(axiosInstance, 'axiosCall').mockResolvedValue([item]);
 
-    const result = await createItem(item);
+    const result = await createItemApi(item);
 
     expect(spyOnAxiosCall).toHaveBeenCalledWith(
       'items',
@@ -31,7 +31,7 @@ describe('createItem', () => {
     const item = getItemDtoFixture();
 
     try {
-      await createItem(item);
+      await createItemApi(item);
     } catch (err) {
       expect(err).toEqual(error);
     }

@@ -69,7 +69,12 @@ You can run the stack with docker, `npm start` is running both projects in a dis
 
 ## Urls
 
-| Entry Point                                         | Description                                           |
+| Entry Point over Docker                             | Description                                           |
 |-----------------------------------------------------|-------------------------------------------------------|
-| [http://localhost:3001](http://localhost:3001)      | Frontend application (React)                          |
-| [http://localhost:3000/api](http://localhost:3000/api) | Backend API (NestJS) and Swagger documentation         |
+| [http://localhost:3000](http://localhost:3000)      | Frontend application (React)                          |
+| [http://localhost:3001/api](http://localhost:3001/api) | Backend API (NestJS) and Swagger documentation         |
+
+| Entry Point over nx serve                           | Description                                           |
+|-----------------------------------------------------|-------------------------------------------------------|
+| [http://localhost:4200](http://localhost:4200)      | Frontend application (React)                          |
+| [http://localhost:3001/api](http://localhost:3001/api) | Backend API (NestJS) and Swagger documentation         |

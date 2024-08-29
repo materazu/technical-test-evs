@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { faker } from '@faker-js/faker';
 import { IsAlpha, IsEmail, IsNotEmpty, IsNumber, IsPositive, Max, Min } from 'class-validator';
+
 export interface ItemDtoInterface {
   firstName: string;
   lastName: string;

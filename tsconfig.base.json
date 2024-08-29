@@ -17,7 +17,9 @@
     "paths": {
       "@evs/dtos": ["libs/dtos/src/index.ts"],
       "@evs/tokens": ["libs/tokens/src/index.ts"],
-      "@evs/services": ["libs/services/src/index.ts"]
+      "@evs/services": ["libs/services/src/index.ts"],
+      "@evs/stores": ["libs/stores/src/index.ts"],
+      "@evs/apis": ["libs/apis/src/index.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]

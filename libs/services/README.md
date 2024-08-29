@@ -1,7 +1,7 @@
 # services
 
-This library was generated with [Nx](https://nx.dev).
+This library share global services accross multiple projects.
 
 ## Running unit tests
 
-Run `nx test services` to execute the unit tests via [Jest](https://jestjs.io).
+Run `npx nx test services` to execute the unit tests via [Jest](https://jestjs.io).

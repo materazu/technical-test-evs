@@ -2,7 +2,7 @@
 
 The goal of this project is to build a front/back application, to manage items. This project is a technical test for EVS.
 
-# Project Overview
+# Project overview
 
 This project is structured as a monorepo managed with [Nx](https://nx.dev/), leveraging modern technologies to build a scalable and maintainable application.
 
@@ -12,7 +12,35 @@ This project is structured as a monorepo managed with [Nx](https://nx.dev/), lev
 
 Together, these tools create a robust and flexible foundation for building both the backend and frontend of the application.
 
-# Install
+
+### Shared libraries
+
+In this project, we utilize Nx libraries to share code across different services and applications within the monorepo. This approach promotes code reusability, consistency, and maintainability, reducing duplication and enabling faster development.
+
+#### Libraries overview
+
+- **apis**: This library contains the logic for making HTTP requests to the backend API using Axios. By centralizing API calls here, we ensure consistent communication with the backend across the entire frontend application.
+
+- **dtos**: The `dtos` library defines the data transfer objects (DTOs) used throughout the application. These models are crucial for structuring the data exchanged between the frontend and backend, supporting Swagger documentation generation in the backend, and enabling validation to ensure data integrity.
+
+- **services**: This library holds services that are shared primarily among the API applications. These services encapsulate business logic and functionalities that can be reused across different parts of the backend, promoting a modular and DRY (Don't Repeat Yourself) approach.
+
+- **stores**: The `stores` library is focused on state management using Recoil. It provides generalized methods and tools for managing state across the frontend application, allowing for consistent and efficient state handling throughout the React components.
+
+- **tokens**: The `tokens` library offers injection tokens for services and global constants. This library is particularly useful for dependency injection in NestJS services, as well as for maintaining consistent and easily configurable constants across all projects within the monorepo.
+
+#### Why shared libraries?
+
+By organizing common logic and utilities into shared libraries, we achieve several benefits:
+
+- **Code Reusability**: Shared libraries allow us to write code once and reuse it across different parts of the project, reducing duplication and potential bugs.
+- **Consistency**: Centralizing common functionality ensures that all applications and services adhere to the same standards and practices.
+- **Maintainability**: With shared libraries, updates or bug fixes in one place automatically propagate to all dependent applications, simplifying maintenance and reducing the risk of errors.
+- **Scalability**: As the project grows, shared libraries help keep the codebase organized and modular, making it easier to manage and scale.
+
+Using these libraries effectively allows us to build a more robust and maintainable codebase, ensuring that the project can evolve smoothly over time.
+
+## Install
 
 To be able to work with the project, you just need to do an `npm install` at root.
 
@@ -45,4 +73,3 @@ You can run the stack with docker, `npm start` is running both projects in a dis
 |-----------------------------------------------------|-------------------------------------------------------|
 | [http://localhost:3001](http://localhost:3001)      | Frontend application (React)                          |
 | [http://localhost:3000/api](http://localhost:3000/api) | Backend API (NestJS) and Swagger documentation         |
-

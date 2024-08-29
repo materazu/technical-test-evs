@@ -13,10 +13,19 @@ export function App() {
       <ToastContainer />
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1 }}
+            data-testid="app-title"
+          >
             Items Manager - EVS
           </Typography>
-          <Button color="inherit" onClick={() => setActivePage(ADD_ITEM)}>Add New Item</Button>
+          <Button
+            color="inherit"
+            onClick={() => setActivePage(ADD_ITEM)}
+            data-testid="add-item-button"
+          >Add New Item</Button>
         </Toolbar>
       </AppBar>
       {activePage === ITEM_LIST && <ItemList />}

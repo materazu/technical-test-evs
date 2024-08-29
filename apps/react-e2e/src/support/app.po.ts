@@ -1,1 +1,15 @@
-export const getGreeting = () => cy.get('h1');
+export const getAppTitle = () => cy.get('[data-testid="app-title"]');
+export const getAddItemButton = () => cy.get('[data-testid="add-item-button"]');
+export const getItemsList = () => cy.get('[data-testid="items-list"]');
+export const getItemCard = () => cy.get('[data-testid="item-card"]');
+export const getItemCardName = () => cy.get('[data-testid="item-card-name"]');
+export const getItemCardAge = () => cy.get('[data-testid="item-card-age"]');
+export const getItemCardEmail = () => cy.get('[data-testid="item-card-email"]');
+export const getAddItemForm = () => cy.get('[data-testid="add-item-form"]');
+export const getAddItemFormTitle = () => cy.get('[data-testid="add-item-form-title"]');
+export const getCancelButton = () => cy.get('[data-testid="cancel-button"]');
+export const getFirstNameInput = () => cy.get('[data-testid="first-name-input"]');
+export const getLastNameInput = () => cy.get('[data-testid="last-name-input"]');
+export const getAgeInput = () => cy.get('[data-testid="age-input"]');
+export const getEmailInput = () => cy.get('[data-testid="email-input"]');
+export const getSubmitButton = () => cy.get('[data-testid="submit-button"]');

@@ -17,10 +17,10 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
-    .setTitle('Evs api')
-    .setDescription('This items api provides endpoints for managing items.')
+    .setTitle('Evs Users Service Api')
+    .setDescription('This api service provides endpoints for managing users.')
     .setVersion('1.0')
-    .addTag('items')
+    .addTag('user')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
@@ -29,7 +29,7 @@ async function bootstrap() {
   await app.listen(port);
 
   Logger.log(
-    `🚀 Api is running on: http://localhost:${port}/${globalPrefix}`
+    `🚀 Users Service is running on: http://localhost:${port}/${globalPrefix}`
   );
 }
 

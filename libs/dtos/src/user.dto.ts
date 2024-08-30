@@ -2,14 +2,14 @@ import { ApiProperty } from '@nestjs/swagger';
 import { faker } from '@faker-js/faker';
 import { IsAlpha, IsEmail, IsNotEmpty, IsNumber, IsPositive, Max, Min } from 'class-validator';
 
-export interface ItemDtoInterface {
+export interface UserDtoInterface {
   firstName: string;
   lastName: string;
   email: string;
   age: number;
 }
 
-export class ItemDto implements ItemDtoInterface {
+export class UserDto implements UserDtoInterface {
   @ApiProperty({ type: String, example: faker.person.firstName() })
   @IsNotEmpty()
   @IsAlpha()
@@ -33,11 +33,11 @@ export class ItemDto implements ItemDtoInterface {
   age = 0;
 }
 
-export const getItemDtoFixture = (): ItemDto => ({
+export const getUserDtoFixture = (): UserDto => ({
   firstName: faker.person.firstName(),
   lastName: faker.person.lastName(),
   email: faker.internet.email(),
   age: faker.number.int({ min: 18, max: 99 }),
 });
 
-export const getItemsDtoFixture = (count: number): ItemDto[] => Array.from({ length: count }, () => getItemDtoFixture());
+export const getUsersDtoFixture = (count: number): UserDto[] => Array.from({ length: count }, () => getUserDtoFixture());

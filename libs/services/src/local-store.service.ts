@@ -1,5 +1,4 @@
-import { ItemDto } from '@evs/dtos';
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Simple in-memory store for demonstration purposes.
  */
@@ -9,7 +8,7 @@ export class LocalStoreService {
    *
    * @private _store Items array
    */
-  private _store: ItemDto[] = [];
+  private _store: any[] = [];
 
   /**
    * Add a new item to the local store
@@ -17,7 +16,7 @@ export class LocalStoreService {
    * @param item ItemDto to be added to the store
    * @returns Items array after adding the new item
    */
-  add(item: ItemDto): ItemDto[] {
+  add(item: any): any[] {
     this._store.push(item);
 
     return this.store;
@@ -28,7 +27,7 @@ export class LocalStoreService {
    *
    * @returns The local store
    */
-  get store (): ItemDto[] {
+  get store (): any[] {
     return this._store;
   }
 }

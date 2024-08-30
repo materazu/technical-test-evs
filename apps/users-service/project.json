@@ -1,7 +1,7 @@
 {
-  "name": "api",
+  "name": "users-service",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/api/src",
+  "sourceRoot": "apps/users-service/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -10,15 +10,15 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "api:build",
+        "buildTarget": "users-service:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "api:build:development"
+          "buildTarget": "users-service:build:development"
         },
         "production": {
-          "buildTarget": "api:build:production"
+          "buildTarget": "users-service:build:production"
         }
       }
     }

@@ -5,8 +5,8 @@ module.exports = async function () {
   // Start services that that the app needs to run (e.g. database, docker-compose, etc.).
   console.log('\nSetting up...\n');
 
-  // Start the API server
-  const server = spawn('nx', ['serve', 'api'], {
+  // Start the users-service server
+  const server = spawn('nx', ['serve', 'users-service'], {
     shell: true,
     stdio: 'inherit',
   });

@@ -2,7 +2,7 @@ import { ITEM_LIST, PagesStore } from './pages.store';
 import { snapshot_UNSTABLE } from 'recoil';
 
 describe('PagesStore', () => {
-  it('should have correct default values and keys for ItemsStore', () => {
+  it('should have correct default values and keys for PagesStore', () => {
     const initialSnapshot = snapshot_UNSTABLE();
     const ItemsStoreDefaultValue = initialSnapshot.getLoadable(
       PagesStore,

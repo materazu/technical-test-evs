@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "start": "docker compose up --build",
     "serve:react": "npx nx serve react",
     "build:react": "npx nx build react",
     "lint:react": "npx nx lint react",

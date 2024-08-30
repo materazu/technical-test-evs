@@ -1,15 +1,15 @@
-import { findAllItemsApi } from './find-all-items.api';
+import { getAllUsersApi } from './get-all-users.api';
 
-describe('findAllItemsApi', () => {
-  it('should call get to get all items', async () => {
+describe('getAllUsersApi', () => {
+  it('should call get to get all users', async () => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const axiosInstance = require('../axios-instance');
     const spyOnAxiosCall = jest.spyOn(axiosInstance, 'axiosCall').mockResolvedValue([]);
 
-    const result = await findAllItemsApi();
+    const result = await getAllUsersApi();
 
     expect(spyOnAxiosCall).toHaveBeenCalledWith(
-      'items',
+      'user',
       'get',
     );
     expect(result).toEqual([]);
@@ -17,14 +17,14 @@ describe('findAllItemsApi', () => {
     spyOnAxiosCall.mockClear();
   });
 
-  it('should fail with error on get all items', async () => {
+  it('should fail with error on get all users', async () => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const axiosInstance = require('../axios-instance');
-    const error = { message: 'Error finding all items' };
+    const error = { message: 'Error finding all users' };
     const spyOnAxiosCall = jest.spyOn(axiosInstance, 'axiosCall').mockRejectedValue(error);
 
     try {
-      await findAllItemsApi();
+      await getAllUsersApi();
     } catch (err) {
       expect(err).toEqual(error);
     }

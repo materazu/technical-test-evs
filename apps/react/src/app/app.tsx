@@ -1,12 +1,16 @@
-import { ADD_ITEM, ITEM_LIST, PagesStore } from '@evs/stores';
+import { ADD_USER, USER_LIST, PagesStore } from '@evs/stores';
 import { useRecoilState } from 'recoil';
-import { ItemAddForm, ItemList } from './components';
+import { UserAddForm, UsersList } from './components';
 import { AppBar, Button, Toolbar, Typography } from '@mui/material';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export function App() {
   const [activePage, setActivePage] = useRecoilState(PagesStore);
+
+  const handleButtonClick = () => {
+    setActivePage(ADD_USER)
+  };
 
   return (
     <>
@@ -19,17 +23,17 @@ export function App() {
             sx={{ flexGrow: 1 }}
             data-testid="app-title"
           >
-            Items Manager - EVS
+            Users Manager - EVS
           </Typography>
           <Button
             color="inherit"
-            onClick={() => setActivePage(ADD_ITEM)}
-            data-testid="add-item-button"
-          >Add New Item</Button>
+            onClick={() => handleButtonClick()}
+            data-testid="add-user-button"
+          >Add New User</Button>
         </Toolbar>
       </AppBar>
-      {activePage === ITEM_LIST && <ItemList />}
-      {activePage === ADD_ITEM && <ItemAddForm />}
+      {activePage === USER_LIST && <UsersList />}
+      {activePage === ADD_USER && <UserAddForm />}
     </>
   );
 }

@@ -1,4 +1,3 @@
-import { getItemDtoFixture } from '@evs/dtos';
 import { LocalStoreService } from './local-store.service';
 
 describe('LocalStoreService', () => {
@@ -13,7 +12,7 @@ describe('LocalStoreService', () => {
   });
 
   it('should add item', () => {
-    const itemToAdd = getItemDtoFixture();
+    const itemToAdd = { id: 1, name: 'John Doe' };
     service.add(itemToAdd);
     expect(service.store).toEqual([itemToAdd]);
   });

@@ -1,13 +1,13 @@
-import { ItemDto } from '@evs/dtos';
-import { createItemAction, ITEM_LIST, ItemsStore, PagesStore } from '@evs/stores';
+import { UserDto } from '@evs/dtos';
+import { createUserAction, USER_LIST, UsersStore, PagesStore } from '@evs/stores';
 import { Button, Container, Grid2, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { SetterOrUpdater, useSetRecoilState } from 'recoil';
 
-export const ItemAddForm = () => {
+export const UserAddForm = () => {
   const setActivePage = useSetRecoilState(PagesStore);
-  const setItems: SetterOrUpdater<ItemDto[]> = useSetRecoilState(ItemsStore);
+  const setusers: SetterOrUpdater<UserDto[]> = useSetRecoilState(UsersStore);
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -17,15 +17,15 @@ export const ItemAddForm = () => {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
 
-    const item: ItemDto = {
+    const user: UserDto = {
       firstName,
       lastName,
       email,
       age: +age,
     };
 
-    await createItemAction(item, setItems);
-    toast.success('Item added successfully!');
+    await createUserAction(user, setusers);
+    toast.success('user added successfully!');
 
     setFirstName('');
     setLastName('');
@@ -36,19 +36,19 @@ export const ItemAddForm = () => {
   };
 
   const returnToList = () => {
-    setActivePage(ITEM_LIST);
+    setActivePage(USER_LIST);
   };
 
   return (
-    <Container maxWidth="md" data-testid="add-item-form">
+    <Container maxWidth="md" data-testid="add-user-form">
       <Typography
         variant="h6"
         component="div"
         sx={{ flexGrow: 1 }}
         marginTop={5}
-        data-testid="add-item-form-title"
+        data-testid="add-user-form-title"
       >
-        Add new Item
+        Add new user
       </Typography>
 
       <form

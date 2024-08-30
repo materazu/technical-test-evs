@@ -1,32 +1,32 @@
 import axios from 'axios';
-import { getItemDtoFixture } from '@evs/dtos';
+import { getUserDtoFixture } from '@evs/dtos';
 
-describe('GET /api/items', () => {
+describe('GET /api/user', () => {
   it('should return empty collection', async () => {
-    const res = await axios.get(`/api/items`);
+    const res = await axios.get(`/api/user`);
 
     expect(res.status).toBe(200);
     expect(Array.isArray(res.data)).toBeTruthy();
   });
 
-  it('should insert item in collection', async () => {
-    const item = getItemDtoFixture();
-    const res = await axios.post(`/api/items`, item);
+  it('should insert user in collection', async () => {
+    const user = getUserDtoFixture();
+    const res = await axios.post(`/api/user`, user);
 
-    const expectedItemIsInCollection = res.data.find(itemInCollection => itemInCollection.firstName === item.firstName);
+    const expectedUserIsInCollection = res.data.find(userInCollection => userInCollection.firstName === user.firstName);
     expect(res.status).toBe(200);
     expect(res.data.length).not.toEqual(0);
-    expect(expectedItemIsInCollection).toEqual(item);
+    expect(expectedUserIsInCollection).toEqual(user);
   });
 
   it('should validate data for firstName', async () => {
-    const item = {
-      ...getItemDtoFixture(),
+    const user = {
+      ...getUserDtoFixture(),
       firstName: '',
     };
 
     try {
-      await axios.post(`/api/items`, item);
+      await axios.post(`/api/user`, user);
     } catch (error) {
       const errors = [
         'firstName must contain only letters (a-zA-Z)',
@@ -39,13 +39,13 @@ describe('GET /api/items', () => {
   });
 
   it('should validate data for lastName', async () => {
-    const item = {
-      ...getItemDtoFixture(),
+    const user = {
+      ...getUserDtoFixture(),
       lastName: '',
     };
 
     try {
-      await axios.post(`/api/items`, item);
+      await axios.post(`/api/user`, user);
     } catch (error) {
       const errors = [
         'lastName must contain only letters (a-zA-Z)',
@@ -58,13 +58,13 @@ describe('GET /api/items', () => {
   });
 
   it('should validate data for email', async () => {
-    const item = {
-      ...getItemDtoFixture(),
+    const user = {
+      ...getUserDtoFixture(),
       email: '',
     };
 
     try {
-      await axios.post(`/api/items`, item);
+      await axios.post(`/api/user`, user);
     } catch (error) {
       const errors = [
         'email must be an email',
@@ -77,13 +77,13 @@ describe('GET /api/items', () => {
   });
 
   it('should validate age, more than 18', async () => {
-    const item = {
-      ...getItemDtoFixture(),
+    const user = {
+      ...getUserDtoFixture(),
       age: 10,
     };
 
     try {
-      await axios.post(`/api/items`, item);
+      await axios.post(`/api/user`, user);
     } catch (error) {
       const errors = [
         'age must not be less than 18'
@@ -95,13 +95,13 @@ describe('GET /api/items', () => {
   });
 
   it('should validate age, less than 99', async () => {
-    const item = {
-      ...getItemDtoFixture(),
+    const user = {
+      ...getUserDtoFixture(),
       age: 100,
     };
 
     try {
-      await axios.post(`/api/items`, item);
+      await axios.post(`/api/user`, user);
     } catch (error) {
       const errors = [
         'age must not be greater than 99'

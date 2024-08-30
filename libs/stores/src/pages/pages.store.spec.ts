@@ -1,4 +1,4 @@
-import { ITEM_LIST, PagesStore } from './pages.store';
+import { USER_LIST, PagesStore } from './pages.store';
 import { snapshot_UNSTABLE } from 'recoil';
 
 describe('PagesStore', () => {
@@ -9,6 +9,6 @@ describe('PagesStore', () => {
     ).getValue();
 
     expect(PagesStore.key).toBe('PagesStore');
-    expect(ItemsStoreDefaultValue).toEqual(ITEM_LIST);
+    expect(ItemsStoreDefaultValue).toEqual(USER_LIST);
   });
 });

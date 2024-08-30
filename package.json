@@ -15,7 +15,7 @@
     "e2e:users-service": "npx nx e2e users-service-e2e",
     "serve:all": "npx nx run-many -t serve",
     "lint:all": "npx nx run-many -t lint",
-    "test:all": "npx nx run-many -t test",
+    "test:all": "npx nx run-many --target=test --exclude='react-e2e,users-service-e2e'",
     "e2e:all": "npx nx run-many -t e2e"
   },
   "private": true,

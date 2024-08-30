@@ -1,11 +1,11 @@
 import { atom, RecoilState } from 'recoil';
 
-export const ITEM_LIST = 'ITEM_LIST';
-export const ADD_ITEM = 'ADD_ITEM';
+export const USER_LIST = 'USER_LIST';
+export const ADD_USER = 'ADD_USER';
 
-export type AvailablePages = typeof ITEM_LIST | typeof ADD_ITEM;
+export type AvailablePages = typeof USER_LIST | typeof ADD_USER;
 
 export const PagesStore: RecoilState<AvailablePages> = atom<AvailablePages>({
   key: 'PagesStore',
-  default: ITEM_LIST,
+  default: USER_LIST,
 });

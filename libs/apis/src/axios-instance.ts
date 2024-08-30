@@ -3,13 +3,13 @@ import axios from 'axios';
 export const axiosCall = <T>(
   path: string,
   method: 'get' | 'post' | 'put' | 'patch' | 'delete' | 'option' = 'get',
-  service = 'items',
+  service = 'user',
   payload?: unknown,
 ): Promise<T> => {
   let url: string;
 
   switch (service) {
-    case 'items':
+    case 'user':
       url = 'http://localhost:3001/api';
     break;
   }

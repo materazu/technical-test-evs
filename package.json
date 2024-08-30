@@ -7,7 +7,6 @@
     "serve:react": "npx nx serve react",
     "build:react": "npx nx build react",
     "lint:react": "npx nx lint react",
-    "test:react": "npx nx test react",
     "e2e:react": "npx nx e2e react-e2e",
     "serve:api": "npx nx serve api",
     "build:api": "npx nx build api",

@@ -49,13 +49,16 @@ To be able to work with the project, you just need to do an `npm install` at roo
 To run, lint, test or e2e one app or both, you can use npm run with one of this commands.
 
 You can run the stack with docker, `npm start` is running both projects in a dist posture, reflecting the production environment.
+
+React tests are carried by end to end tests and not covered by Jest.
+
+
 | Command           | Description                                                                                               | Run Individually or All at Once                                |
 |-------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
 | `start`     | Start a production stack for React and Api.                                                  | Run all in docker using `npm start`.                  |
 | `serve:react`     | Starts the development server for the React application.                                                  | Run individually using `npm run serve:react`.                  |
 | `build:react`     | Builds the production version of the React application.                                                   | Run individually using `npm run build:react`.                  |
 | `lint:react`      | Lints the codebase for the React application to ensure code quality and adherence to standards.           | Run individually using `npm run lint:react`.                   |
-| `test:react`      | Runs unit tests for the React application.                                                                | Run individually using `npm run test:react`.                   |
 | `e2e:react`       | Runs end-to-end tests for the React application.                                                          | Run individually using `npm run e2e:react`.                    |
 | `serve:api`       | Starts the development server for the NestJS API application.                                             | Run individually using `npm run serve:api`.                    |
 | `build:api`       | Builds the production version of the NestJS API application.                                              | Run individually using `npm run build:api`.                    |

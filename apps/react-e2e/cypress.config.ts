@@ -8,7 +8,7 @@ export default defineConfig({
       cypressDir: 'src',
       bundler: 'vite',
       webServerCommands: {
-        default: 'nx run react:serve',
+        default: 'npm run serve:all',
         production: 'nx run react:preview',
       },
       ciWebServerCommand: 'nx run react:preview',

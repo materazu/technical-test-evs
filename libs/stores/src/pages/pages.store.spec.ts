@@ -1,14 +1,14 @@
-import { ItemsStore } from './items.store';
+import { ITEM_LIST, PagesStore } from './pages.store';
 import { snapshot_UNSTABLE } from 'recoil';
 
-describe('ItemsStore', () => {
+describe('PagesStore', () => {
   it('should have correct default values and keys for ItemsStore', () => {
     const initialSnapshot = snapshot_UNSTABLE();
     const ItemsStoreDefaultValue = initialSnapshot.getLoadable(
-      ItemsStore,
+      PagesStore,
     ).getValue();
 
-    expect(ItemsStore.key).toBe('ItemsStore');
-    expect(ItemsStoreDefaultValue).toEqual([]);
+    expect(PagesStore.key).toBe('PagesStore');
+    expect(ItemsStoreDefaultValue).toEqual(ITEM_LIST);
   });
 });

@@ -1,8 +1,10 @@
 
 import { Inject, Injectable } from '@nestjs/common';
+
+import { USER_REPOSITORY } from '@evs/tokens';
+
 import { UserRepository } from '../ports/user-repository.interface';
 import { User } from '../entities/user.entity';
-import { USER_REPOSITORY } from '@evs/tokens';
 
 @Injectable()
 export class UserDomainService {
@@ -17,4 +19,12 @@ export class UserDomainService {
   createUser(user: User): User[] {
     return this.userRepository.save(user);
   }
+}
+
+/* istanbul ignore next */
+export class UserDomainServiceMock {
+  /* eslint-disable-next-line @typescript-eslint/no-empty-function */
+  getAllUsers() { }
+  /* eslint-disable-next-line @typescript-eslint/no-empty-function */
+  createUser() { }
 }

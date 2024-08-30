@@ -1,7 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ItemsController } from './items.controller';
-import { ItemsService, ItemsServiceMock } from './items.service';
-import { getItemDtoFixture, getItemsDtoFixture } from '@evs/dtos';
+import { UserController } from './user.controller';
+import { getUserDtoFixture, UserDto } from '@evs/dtos';
+import { UserApplicationService, UserApplicationServiceMock } from '../../application/services/user-application.service';
+import { getUsersFixture, User } from '../../domain/entities/user.entity';
+import { plainToClass, plainToInstance } from 'class-transformer';
 
 const resMock = {
   status: () => {
@@ -17,23 +19,23 @@ const resMock = {
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 } as any;
 
-describe('ItemsController', () => {
-  let controller: ItemsController;
-  let service: ItemsService;
+describe('UserController', () => {
+  let controller: UserController;
+  let service: UserApplicationService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [ItemsController],
+      controllers: [UserController],
       providers: [
         {
-          provide: ItemsService,
-          useClass: ItemsServiceMock
+          provide: UserApplicationService,
+          useClass: UserApplicationServiceMock
         },
       ],
     }).compile();
 
-    controller = module.get<ItemsController>(ItemsController);
-    service = module.get<ItemsService>(ItemsService);
+    controller = module.get<UserController>(UserController);
+    service = module.get<UserApplicationService>(UserApplicationService);
   });
 
   it('should be defined', () => {
@@ -41,60 +43,63 @@ describe('ItemsController', () => {
     expect(service).toBeDefined();
   });
 
-  it('should get all items', () => {
-    const itemsMock = getItemsDtoFixture(3);
-    const spyGetItem = jest.spyOn(service, 'getItems').mockReturnValue(itemsMock);
+  it('should get all users', () => {
+    const usersMock = getUsersFixture(3);
+    const result = plainToInstance(UserDto, usersMock);
+    const spyGetItem = jest.spyOn(service, 'getAllUsers').mockReturnValue(usersMock);
     const spyStatus = jest.spyOn(resMock, 'status');
 
-    const items = controller.getItems(resMock);
+    const users = controller.getAllUsers(resMock);
 
     expect(spyGetItem).toHaveBeenCalled();
     expect(spyStatus).toHaveBeenCalledWith(200);
-    expect(items).toEqual(itemsMock);
+    expect(users).toEqual(result);
 
     spyGetItem.mockClear();
     spyStatus.mockClear();
   });
 
-  it('should return error if service fail for getItems', () => {
-    const spyGetItem = jest.spyOn(service, 'getItems').mockImplementation(() => {
+  it('should return error if service fail for getUser', () => {
+    const spyGetItem = jest.spyOn(service, 'getAllUsers').mockImplementation(() => {
       throw new Error('Service error');
     });
     const spyStatus = jest.spyOn(resMock, 'status');
 
-    const response = controller.getItems(resMock);
+    const response = controller.getAllUsers(resMock);
 
     expect(spyGetItem).toHaveBeenCalled();
     expect(spyStatus).toHaveBeenCalledWith(400);
     expect(response).toEqual({error: 'Service error'});
   });
 
-  it('should add an item', () => {
-    const itemToAdd = getItemDtoFixture();
-    const itemsMock = [...getItemsDtoFixture(3), itemToAdd];
-    const spyAddItem = jest.spyOn(service, 'addItem').mockReturnValue(itemsMock);
+  it('should add an user', () => {
+    const userToAdd = getUserDtoFixture();
+    const userToAddInstance = plainToClass(User, userToAdd);
+    const usersMock = [...getUsersFixture(3), userToAdd];
+    const response = plainToInstance(UserDto, usersMock);
+    const spyAddItem = jest.spyOn(service, 'createUser').mockReturnValue(usersMock);
     const spyStatus = jest.spyOn(resMock, 'status');
 
-    const items = controller.addItem(itemToAdd, resMock);
+    const users = controller.createUser(userToAdd, resMock);
 
-    expect(spyAddItem).toHaveBeenCalledWith(itemToAdd);
+    expect(spyAddItem).toHaveBeenCalledWith(userToAddInstance);
     expect(spyStatus).toHaveBeenCalledWith(200);
-    expect(items).toEqual(itemsMock);
+    expect(users).toEqual(response);
 
     spyAddItem.mockClear();
     spyStatus.mockClear();
   });
 
   it('should return error if service fail for addItem', () => {
-    const itemToAdd = getItemDtoFixture();
-    const spyAddItem = jest.spyOn(service, 'addItem').mockImplementation(() => {
+    const userToAdd = getUserDtoFixture();
+    const spyAddItem = jest.spyOn(service, 'createUser').mockImplementation(() => {
       throw new Error('Service error');
     });
     const spyStatus = jest.spyOn(resMock, 'status');
 
-    const response = controller.addItem(itemToAdd, resMock);
+    const response = controller.createUser(userToAdd, resMock);
 
-    expect(spyAddItem).toHaveBeenCalledWith(itemToAdd);
+    expect(spyAddItem).toHaveBeenCalledWith(userToAdd);
     expect(spyStatus).toHaveBeenCalledWith(400);
     expect(response).toEqual({error: 'Service error'});
   });

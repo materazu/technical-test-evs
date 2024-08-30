@@ -1,8 +1,11 @@
 import { Body, Controller, Get, HttpStatus, Post, Res } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+
+import { plainToClass, plainToInstance } from 'class-transformer';
+
 import { UserDto } from '@evs/dtos';
+
 import { UserApplicationService } from '../../application/services/user-application.service';
-import { plainToClass } from 'class-transformer';
 import { User } from '../../domain/entities/user.entity';
 
 const okStatus = HttpStatus.OK;
@@ -20,9 +23,10 @@ export class UserController {
   @Get()
   getAllUsers(@Res() res) {
     try {
-      const users = this.itemApplicationService.getAllUsers().map((user) => plainToClass(UserDto, user));
+      const users = this.itemApplicationService.getAllUsers();
+      const response = plainToInstance(UserDto, users);
 
-      return res.status(okStatus).json(users);
+      return res.status(okStatus).json(response);
     } catch (error) {
       return res.status(badRequestStatus).json({ error: error.message });
     }
@@ -32,10 +36,12 @@ export class UserController {
   @ApiOperation({ summary: 'Adding an item' })
   @ApiResponse({ status: okStatus, description: 'Returns users with new User added.', type: UserDto, isArray: true })
   @ApiResponse({ status: badRequestStatus, description: 'Error in process or in validation' })
-  addUser(@Body() item: UserDto, @Res() res) {
+  createUser(@Body() item: UserDto, @Res() res) {
     try {
       const user = plainToClass(User, item);
-      return res.status(okStatus).json(this.itemApplicationService.createUser(user));
+      const users = this.itemApplicationService.createUser(user);
+
+      return res.status(okStatus).json(users);
     } catch (error) {
       return res.status(HttpStatus.BAD_REQUEST).json({ error: error.message });
     }

@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
-import { ItemsModule } from './modules/items/items.module';
+
+import { UserModule } from './modules/user/interfaces/user.module';
 
 @Module({
-  imports: [ItemsModule],
+  imports: [UserModule],
 })
 export class RootModule {}

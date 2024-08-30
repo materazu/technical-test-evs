@@ -16,10 +16,8 @@ export class LocalStoreService {
    * @param item ItemDto to be added to the store
    * @returns Items array after adding the new item
    */
-  add(item: any): any[] {
+  add(item: any): void {
     this._store.push(item);
-
-    return this.store;
   }
 
   /**

@@ -15,9 +15,11 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/src/**/*.{js,jsx,ts,tsx}',
     '!**/index.{js,jsx,ts,tsx}',
-    '!**/*.mock.{js,jsx,ts,tsx}',
-    '!**/*.module.{js,jsx,ts,tsx}',
+    '!**/*mock.{js,jsx,ts,tsx}',
+    '!**/*module.{js,jsx,ts,tsx}',
     '!**/*dto.{js,jsx,ts,tsx}',
     '!**/*main.{js,jsx,ts,tsx}',
+    '!**/*entity.{js,jsx,ts,tsx}',
+    '!**/*interface.{js,jsx,ts,tsx}',
   ],
 };
